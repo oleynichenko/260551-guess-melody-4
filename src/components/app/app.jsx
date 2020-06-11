@@ -1,5 +1,4 @@
-import React from 'react';
-import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
+import WelcomeScreen from "Components/welcome-screen/welcome-screen";
 
 const App = (props) => {
   // eslint-disable-next-line react/prop-types

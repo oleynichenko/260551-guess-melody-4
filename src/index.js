@@ -1,6 +1,5 @@
-import React from "react";
 import ReactDOM from 'react-dom';
-import App from "./components/app/app.jsx";
+import App from "Components/app/app";
 
 const init = () => {
   const settings = {

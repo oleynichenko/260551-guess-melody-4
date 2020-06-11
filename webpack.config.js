@@ -22,5 +22,16 @@ module.exports = {
       }
     ],
   },
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, `src/components`)
+    },
+    extensions: [`.js`, `.jsx`],
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'React': `react`,
+    })
+  ],
   devtool: `source-map`,
 };
