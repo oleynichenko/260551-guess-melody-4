@@ -22,7 +22,3 @@ rules:
 
 globals:
   React: true
-  PropTypes: true
-  renderer: true
-  shallow: true
-  mount: true
