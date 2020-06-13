@@ -4,7 +4,7 @@ import App from "./app";
 
 const errorCount = 1;
 
-describe(`App`, () => {
+describe(`AppComponent`, () => {
   it(`should render App`, () => {
     const tree = renderer.create(
         <App

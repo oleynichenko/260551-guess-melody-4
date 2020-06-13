@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WelcomeScreen should render WelcomeScreen with 1 error count 1`] = `
+exports[`WelcomeScreenComponent should render WelcomeScreen with 1 error count 1`] = `
 <section
   className="welcome"
 >
@@ -16,6 +16,7 @@ exports[`WelcomeScreen should render WelcomeScreen with 1 error count 1`] = `
   </div>
   <button
     className="welcome__button"
+    onClick={[Function]}
   >
     <span
       className="visually-hidden"
