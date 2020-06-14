@@ -1,6 +1,4 @@
-import React from 'react';
-import WelcomeScreen from "../welcome-screen/welcome-screen";
-import PropTypes from "prop-types";
+import WelcomeScreen from "@components/welcome-screen/welcome-screen";
 
 const welcomeButtonHandler = () => {};
 
