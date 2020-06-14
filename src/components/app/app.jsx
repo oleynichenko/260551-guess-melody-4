@@ -12,8 +12,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  errorCount: PropTypes.number.isRequired,
-  onWelcomeButtonClick: PropTypes.func.isRequired
+  errorCount: PropTypes.number.isRequired
 };
 
 export default App;
