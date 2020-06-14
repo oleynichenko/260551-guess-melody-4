@@ -1,5 +1,4 @@
-import WelcomeScreen from "Components/welcome-screen/welcome-screen";
-import PropTypes from "prop-types";
+import WelcomeScreen from "@components/welcome-screen/welcome-screen";
 
 const App = (props) => {
   const {errorCount} = props;
@@ -10,7 +9,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  errorCount: PropTypes.string.isRequired
+  errorCount: PropTypes.number.isRequired
 };
 
 export default App;

@@ -1,15 +1,11 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
-import App from "Components/app/app";
+import App from "@components/app/app";
+import {AppSettings} from "./constants";
 
 const init = () => {
-  const settings = {
-    errorCount: 3,
-  };
-
   ReactDOM.render(
       <App
-        errorCount={settings.errorCount}
+        errorCount={AppSettings.ERROR_COUNT}
       />,
       document.querySelector(`#root`)
   );
