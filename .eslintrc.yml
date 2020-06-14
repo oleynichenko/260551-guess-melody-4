@@ -24,3 +24,6 @@ rules:
 globals:
   React: true
   PropTypes: true
+  Enzyme: true
+  renderer: true
+  Adapter: true
