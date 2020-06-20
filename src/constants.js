@@ -2,4 +2,11 @@ const AppSettings = {
   ERROR_COUNT: 3
 };
 
-export {AppSettings};
+const GameType = {
+  ARTIST: `artist`,
+  GENRE: `genre`,
+};
+
+export {AppSettings, GameType};
+
+
