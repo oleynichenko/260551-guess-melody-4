@@ -1,7 +1,6 @@
 import {GameType} from "../../constants";
-import {PureComponent} from "react";
 
-class GenreQuestionScreen extends PureComponent {
+class GenreQuestionScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -20,17 +19,17 @@ class GenreQuestionScreen extends PureComponent {
         <header className="game__header">
           <a className="game__back" href="#">
             <span className="visually-hidden">Сыграть ещё раз</span>
-            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию"/>
+            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
           </a>
 
           <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
-            <circle className="timer__line" cx="390" cy="390" r="370" style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}}/>
+            <circle className="timer__line" cx="390" cy="390" r="370" style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
           </svg>
 
           <div className="game__mistakes">
-            <div className="wrong"/>
-            <div className="wrong"/>
-            <div className="wrong"/>
+            <div className="wrong"></div>
+            <div className="wrong"></div>
+            <div className="wrong"></div>
           </div>
         </header>
 
@@ -41,7 +40,8 @@ class GenreQuestionScreen extends PureComponent {
             onSubmit={(evt) => {
               evt.preventDefault();
               onAnswer(question, this.state.answers);
-            }}>
+            }}
+          >
             {answers.map((answer, i) => (
               <div key={`${i}-${answer.src}`} className="track">
                 <button className="track__button track__button--play" type="button"/>
@@ -55,17 +55,13 @@ class GenreQuestionScreen extends PureComponent {
                     className="game__input visually-hidden"
                     type="checkbox"
                     name="answer"
-                    value={`answer-${i}`}
                     id={`answer-${i}`}
                     checked={userAnswers[i]}
                     onChange={(evt) => {
                       const value = evt.target.checked;
 
                       this.setState({
-                        answers: [
-                          ...userAnswers.slice(0, i),
-                          value,
-                          ...userAnswers.slice(i + 1)],
+                        answers: [...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)],
                       });
                     }}
                   />
@@ -73,6 +69,7 @@ class GenreQuestionScreen extends PureComponent {
                 </div>
               </div>
             ))}
+
             <button className="game__submit button" type="submit">Ответить</button>
           </form>
         </section>

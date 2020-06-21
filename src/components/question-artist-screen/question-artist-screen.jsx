@@ -46,6 +46,7 @@ const QuestionArtistScreen = (props) => {
                 id={`answer-${i}`}
                 onChange={(evt) => {
                   evt.preventDefault();
+
                   onAnswer(question, answer);
                 }}
               />
