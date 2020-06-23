@@ -1,9 +1,5 @@
 import WelcomeScreen from "./welcome-screen";
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
-
 describe(`WelcomeScreenComponent`, () => {
   it(`should `, function () {
     const onWelcomeButtonClick = jest.fn();
