@@ -29,6 +29,7 @@ describe(`GenreQuestionScreen`, function () {
         <GenreQuestionScreen
           question={question}
           onAnswer={() => {}}
+          renderPlayer={() => {}}
         />
     ).toJSON();
 
