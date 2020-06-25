@@ -34,6 +34,7 @@ describe(`GenreQuestionScreen`, () => {
         <GenreQuestionScreen
           onAnswer={onAnswer}
           question={question}
+          renderPlayer={() => {}}
         />
     );
 
@@ -57,6 +58,7 @@ describe(`GenreQuestionScreen`, () => {
         <GenreQuestionScreen
           onAnswer={onAnswer}
           question={question}
+          renderPlayer={() => {}}
         />
     );
 
@@ -71,7 +73,6 @@ describe(`GenreQuestionScreen`, () => {
     expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
     expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
 
-    // do not work - no ideas why
-    // expect(screen.find(`input`).map((it) => it.prop(`checked`))).toEqual(userAnswer);
+    expect(screen.find(`input`).map((it) => it.prop(`checked`))).toEqual(userAnswer);
   });
 });

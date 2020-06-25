@@ -28,6 +28,7 @@ describe(`QuestionArtistScreen`, function () {
         <QuestionArtistScreen
           question={question}
           onAnswer={() => {}}
+          renderPlayer={() => {}}
         />
     ).toJSON();
 
