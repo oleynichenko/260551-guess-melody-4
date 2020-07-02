@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GameScreen component render correctly with type GameType.ARTIST 1`] = `
+exports[`GameScreen should render with type GameType.ARTIST 1`] = `
 <section
   className="game game--artist"
 >
@@ -43,17 +43,7 @@ exports[`GameScreen component render correctly with type GameType.ARTIST 1`] = `
     </svg>
     <div
       className="game__mistakes"
-    >
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
-    </div>
+    />
   </header>
   <div
     className="children-component"
@@ -61,7 +51,7 @@ exports[`GameScreen component render correctly with type GameType.ARTIST 1`] = `
 </section>
 `;
 
-exports[`GameScreen component render correctly with type GameType.GENRE 1`] = `
+exports[`GameScreen should render with type GameType.GENRE 1`] = `
 <section
   className="game game--genre"
 >
@@ -105,9 +95,6 @@ exports[`GameScreen component render correctly with type GameType.GENRE 1`] = `
     <div
       className="game__mistakes"
     >
-      <div
-        className="wrong"
-      />
       <div
         className="wrong"
       />

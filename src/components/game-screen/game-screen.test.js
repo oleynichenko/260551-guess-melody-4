@@ -1,12 +1,15 @@
-import GameScreen from "./game-screen.jsx";
+import {GameScreen} from "./game-screen.jsx";
 import {GameType} from "../../constants.js";
 
 const children = <div className="children-component" />;
 
-describe(`GameScreen component render correctly`, () => {
-  it(`with type GameType.ARTIST`, () => {
+describe(`GameScreen`, () => {
+  it(`should render with type GameType.ARTIST`, () => {
     const tree = renderer.create(
-        <GameScreen type={GameType.ARTIST}>
+        <GameScreen
+          type={GameType.ARTIST}
+          mistakes={0}
+        >
           {children}
         </GameScreen>
     ).toJSON();
@@ -14,9 +17,12 @@ describe(`GameScreen component render correctly`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`with type GameType.GENRE`, () => {
+  it(`should render with type GameType.GENRE`, () => {
     const tree = renderer.create(
-        <GameScreen type={GameType.GENRE}>
+        <GameScreen
+          type={GameType.GENRE}
+          mistakes={2}
+        >
           {children}
         </GameScreen>
     ).toJSON();

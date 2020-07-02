@@ -27,7 +27,7 @@ const QuestionArtistScreen = (props) => {
                 onAnswer(question, answer);
               }}
             />
-            <label className="artist__name" htmlFor="answer-1">
+            <label className="artist__name" htmlFor={`answer-${i}`}>
               <img
                 className="artist__picture"
                 src={answer.picture}
