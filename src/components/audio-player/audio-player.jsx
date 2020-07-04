@@ -15,6 +15,10 @@ export default class AudioPlayer extends React.PureComponent {
     const {src} = this.props;
     const audio = this._audioRef.current;
 
+    if (!audio) {
+      return;
+    }
+
     audio.src = src;
 
     audio.oncanplaythrough = () => this.setState({
@@ -48,6 +52,9 @@ export default class AudioPlayer extends React.PureComponent {
 
   componentDidUpdate() {
     const audio = this._audioRef.current;
+    if (!audio) {
+      return;
+    }
 
     if (this.props.isPlaying) {
       audio.play();
