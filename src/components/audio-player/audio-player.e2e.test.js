@@ -6,10 +6,12 @@ describe(`AudioPlayer`, () => {
 
     const player = Enzyme.shallow(
         <AudioPlayer
+          isLoading={false}
           isPlaying={false}
           onPlayButtonClick={handlePlayButtonClick}
-          src={`path`}
-        />
+          src={`path`}>
+          <audio />
+        </AudioPlayer>
     );
 
     player.find(`.track__button`).simulate(`click`);
