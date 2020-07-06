@@ -35,6 +35,8 @@ describe(`GenreQuestionScreen`, () => {
           onAnswer={onAnswer}
           question={question}
           renderPlayer={() => {}}
+          onChange={() => {}}
+          userAnswers={[false, false, false, false]}
         />
     );
 
@@ -54,11 +56,13 @@ describe(`GenreQuestionScreen`, () => {
     const onAnswer = jest.fn((...args) => [...args]);
     const userAnswer = [false, true, false, false];
 
-    const screen = Enzyme.shallow(
+    const screen = Enzyme.mount(
         <GenreQuestionScreen
+          onChange={() => {}}
           onAnswer={onAnswer}
           question={question}
           renderPlayer={() => {}}
+          userAnswers={[false, true, false, false]}
         />
     );
 
@@ -70,9 +74,10 @@ describe(`GenreQuestionScreen`, () => {
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
 
-    expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
-    expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
+    expect(onAnswer.mock.calls[0][0]).toEqual(void 0);
 
-    expect(screen.find(`input`).map((it) => it.prop(`checked`))).toEqual(userAnswer);
+    expect(
+        screen.find(`input`).map((it) => it.prop(`checked`))
+    ).toEqual(userAnswer);
   });
 });

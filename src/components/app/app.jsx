@@ -6,12 +6,13 @@ import GameOverScreen from "@components/game-over-screen/game-over-screen";
 import WinScreen from "@components/win-screen/win-screen.jsx";
 import QuestionArtistScreen from "@components/question-artist-screen/question-artist-screen";
 import GameScreen from "@components/game-screen/game-screen";
-import withAudioPlayer from "@hocs/with-audio-player";
+import withActivePlayer from "@hocs/with-active-player/with-active-player";
 import {GameType} from "../../constants";
 import {ActionCreator} from "../../reducer.js";
+import withUserAnswer from "@hocs/with-user-answer/with-user-answer";
 
-const GenreQuestionScreenWrapped = withAudioPlayer(GenreQuestionScreen);
-const QuestionArtistScreenWrapped = withAudioPlayer(QuestionArtistScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
+const QuestionArtistScreenWrapped = withActivePlayer(QuestionArtistScreen);
 
 class App extends React.PureComponent {
   _renderGameScreen() {
