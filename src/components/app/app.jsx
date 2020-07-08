@@ -8,8 +8,10 @@ import QuestionArtistScreen from "@components/question-artist-screen/question-ar
 import GameScreen from "@components/game-screen/game-screen";
 import withActivePlayer from "@hocs/with-active-player/with-active-player";
 import {GameType} from "../../constants";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/game/game.js";
 import withUserAnswer from "@hocs/with-user-answer/with-user-answer";
+import {getStep, getMistakes, getMaxMistakes} from "../../reducer/game/selectors.js";
+import {getQuestions} from "../../reducer/data/selectors.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const QuestionArtistScreenWrapped = withActivePlayer(QuestionArtistScreen);
@@ -120,10 +122,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  step: state.step,
-  maxMistakes: state.maxMistakes,
-  questions: state.questions,
-  mistakes: state.mistakes,
+  step: getStep(state),
+  maxMistakes: getMaxMistakes(state),
+  questions: getQuestions(state),
+  mistakes: getMistakes(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
