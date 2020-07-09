@@ -2,6 +2,7 @@ import {App} from "./app";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
 
@@ -50,6 +51,8 @@ describe(`AppComponent`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <App
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+            login={() => {}}
             maxMistakes={3}
             mistakes={0}
             questions={questions}
@@ -75,6 +78,8 @@ describe(`AppComponent`, () => {
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={() => {}}
               maxMistakes={3}
               mistakes={0}
               questions={questions}
@@ -104,6 +109,8 @@ describe(`AppComponent`, () => {
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={() => {}}
               maxMistakes={3}
               mistakes={0}
               questions={questions}
@@ -133,6 +140,8 @@ describe(`AppComponent`, () => {
       .create(
           <Provider store={store}>
             <App
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+              login={() => {}}
               maxMistakes={3}
               mistakes={3}
               questions={questions}
@@ -162,6 +171,8 @@ describe(`AppComponent`, () => {
         .create(
             <Provider store={store}>
               <App
+                authorizationStatus={AuthorizationStatus.NO_AUTH}
+                login={() => {}}
                 maxMistakes={3}
                 mistakes={0}
                 questions={questions}
