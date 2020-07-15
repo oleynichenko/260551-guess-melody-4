@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppComponent should render ArtistQuestionScreen 1`] = `
+exports[`Render App Render ArtistQuestionScreen 1`] = `
 <section
   className="game game--artist"
 >
@@ -160,7 +160,7 @@ exports[`AppComponent should render ArtistQuestionScreen 1`] = `
 </section>
 `;
 
-exports[`AppComponent should render AuthScreen 1`] = `
+exports[`Render App Render AuthScreen 1`] = `
 <section
   className="login"
 >
@@ -243,7 +243,7 @@ exports[`AppComponent should render AuthScreen 1`] = `
 </section>
 `;
 
-exports[`AppComponent should render GameOverScreen 1`] = `
+exports[`Render App Render GameOverScreen 1`] = `
 <section
   className="result"
 >
@@ -277,7 +277,7 @@ exports[`AppComponent should render GameOverScreen 1`] = `
 </section>
 `;
 
-exports[`AppComponent should render GenreQuestionScreen 1`] = `
+exports[`Render App Render GenreQuestionScreen 1`] = `
 <section
   className="game game--genre"
 >
@@ -494,7 +494,7 @@ exports[`AppComponent should render GenreQuestionScreen 1`] = `
 </section>
 `;
 
-exports[`AppComponent should render WelcomeScreen 1`] = `
+exports[`Render App Render WelcomeScreen 1`] = `
 <section
   className="welcome"
 >
@@ -548,12 +548,12 @@ exports[`AppComponent should render WelcomeScreen 1`] = `
 </section>
 `;
 
-exports[`AppComponent should render WinScreen 1`] = `
+exports[`Render App Render WinScreen 1`] = `
 <section
-  className="login"
+  className="result"
 >
   <div
-    className="login__logo"
+    className="result__logo"
   >
     <img
       alt="Угадай мелодию"
@@ -563,70 +563,25 @@ exports[`AppComponent should render WinScreen 1`] = `
     />
   </div>
   <h2
-    className="login__title"
+    className="result__title"
   >
     Вы настоящий меломан!
   </h2>
   <p
-    className="login__text"
+    className="result__total"
   >
-    Хотите узнать свой результат? Представтесь!
+    Вы ответили правильно на 
+    2
+     вопросов и совершили 
+    0
+     ошибки
   </p>
-  <form
-    action=""
-    className="login__form"
-    onSubmit={[Function]}
-  >
-    <p
-      className="login__field"
-    >
-      <label
-        className="login__label"
-        htmlFor="name"
-      >
-        Логин
-      </label>
-      <input
-        className="login__input"
-        id="name"
-        name="name"
-        type="text"
-      />
-    </p>
-    <p
-      className="login__field"
-    >
-      <label
-        className="login__label"
-        htmlFor="password"
-      >
-        Пароль
-      </label>
-      <input
-        className="login__input"
-        id="password"
-        name="password"
-        type="text"
-      />
-      <span
-        className="login__error"
-      >
-        Неверный пароль
-      </span>
-    </p>
-    <button
-      className="login__button button"
-      type="submit"
-    >
-      Войти
-    </button>
-  </form>
-  <button
+  <a
     className="replay"
+    href="/"
     onClick={[Function]}
-    type="button"
   >
     Сыграть ещё раз
-  </button>
+  </a>
 </section>
 `;

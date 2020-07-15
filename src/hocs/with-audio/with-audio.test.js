@@ -1,4 +1,4 @@
-import withAudio from "./with-audio.js";
+import withAudio from "./with-audio";
 
 const MockComponent = (props) => {
   const {children} = props;

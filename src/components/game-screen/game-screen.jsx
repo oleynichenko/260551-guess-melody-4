@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {GameType} from "../../constants.js";
+import {GameType} from "../../constants";
 import Mistakes from "../mistakes/mistakes.jsx";
-import {getMistakes} from "../../reducer/game/selectors.js";
+import {getMistakes} from "../../reducer/game/selectors";
 import {ActionCreator} from "../../reducer/game/game";
 import {AppRoute} from "../../constants";
 

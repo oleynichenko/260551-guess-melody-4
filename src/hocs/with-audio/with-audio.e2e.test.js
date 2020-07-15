@@ -1,4 +1,4 @@
-import withAudio from "./with-audio.js";
+import withAudio from "./with-audio";
 
 const Player = (props) => {
   const {onPlayButtonClick, children} = props;

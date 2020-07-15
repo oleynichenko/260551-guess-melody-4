@@ -1,4 +1,4 @@
-import withUserAnswer from "./with-user-answer.js";
+import withUserAnswer from "./with-user-answer";
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withUserAnswer(MockComponent);

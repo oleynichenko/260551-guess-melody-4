@@ -1,5 +1,5 @@
 import Player from "@components/audio-player/audio-player";
-import withAudio from "../with-audio/with-audio.js";
+import withAudio from "../with-audio/with-audio";
 
 const AudioPlayer = withAudio(Player);
 

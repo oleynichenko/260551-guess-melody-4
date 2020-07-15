@@ -1,4 +1,4 @@
-import {GameType} from "../../constants.js";
+import {GameType} from "../../constants";
 
 const withUserAnswer = (Component) => {
   class WithUserAnswer extends React.PureComponent {

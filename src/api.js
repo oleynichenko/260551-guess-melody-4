@@ -1,4 +1,5 @@
 import axios from "axios";
+import {BASE_URL, TIMEOUT} from "./constants";
 
 const Error = {
   UNAUTHORIZED: 401
@@ -6,8 +7,8 @@ const Error = {
 
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({
-    baseURL: `https://4.react.pages.academy/guess-melody`,
-    timeout: 1000 * 5,
+    baseURL: BASE_URL,
+    timeout: TIMEOUT,
     withCredentials: true,
   });
 

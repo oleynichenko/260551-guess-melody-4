@@ -8,31 +8,34 @@ import QuestionArtistScreen from "@components/question-artist-screen/question-ar
 import GameScreen from "@components/game-screen/game-screen";
 import withActivePlayer from "@hocs/with-active-player/with-active-player";
 import {AppRoute, GameType} from "../../constants";
-import {ActionCreator} from "../../reducer/game/game.js";
+import {ActionCreator} from "../../reducer/game/game";
 import withUserAnswer from "@hocs/with-user-answer/with-user-answer";
-import {getStep, getMistakes, getMaxMistakes} from "../../reducer/game/selectors.js";
-import {getQuestions} from "../../reducer/data/selectors.js";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {getStep, getMistakes, getMaxMistakes} from "../../reducer/game/selectors";
+import {getQuestions} from "../../reducer/data/selectors";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {Operation as UserOperation} from "../../reducer/user/user";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import AuthScreen from "@components/auth-screen/auth-screen";
 import PrivateRoute from "../private-route/private-route";
-import history from "../../history.js";
+import history from "../../history";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const QuestionArtistScreenWrapped = withActivePlayer(QuestionArtistScreen);
 
-class App extends React.PureComponent {
-  _renderGameScreen() {
-    const {
-      authorizationStatus,
-      maxMistakes,
-      mistakes,
-      questions,
-      onUserAnswer,
-      onWelcomeButtonClick,
-      step,
-    } = this.props;
+const App = (props) => {
+  const {
+    authorizationStatus,
+    maxMistakes,
+    mistakes,
+    questions,
+    onUserAnswer,
+    onWelcomeButtonClick,
+    step,
+    login,
+    resetGame
+  } = props;
+
+  const _renderGameScreen = () => {
 
     const question = questions[step];
 
@@ -84,48 +87,42 @@ class App extends React.PureComponent {
     }
 
     return null;
-  }
+  };
 
-  render() {
-    const {questions, mistakes, resetGame, login} = this.props;
-
-    return (
-      <Router
-        history={history}
-      >
-        <Switch>
-          <Route exact path={AppRoute.ROOT}>
-            {this._renderGameScreen()}
-          </Route>
-          <Route exact path={AppRoute.LOGIN}>
-            <AuthScreen
-              onReplayButtonClick={resetGame}
-              onSubmit={login}
-            />
-          </Route>
-          <Route exact path={AppRoute.LOSE}>
-            <GameOverScreen
-              onReplayButtonClick={resetGame}
-            />
-          </Route>
-          <PrivateRoute
-            exact
-            path={AppRoute.RESULT}
-            render={() => {
-              return (
-                <WinScreen
-                  questionsCount={questions.length}
-                  mistakesCount={mistakes}
-                  onReplayButtonClick={resetGame}
-                />
-              );
-            }}
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route exact path={AppRoute.ROOT}>
+          {_renderGameScreen()}
+        </Route>
+        <Route exact path={AppRoute.LOGIN}>
+          <AuthScreen
+            onReplayButtonClick={resetGame}
+            onSubmit={login}
           />
-        </Switch>
-      </Router>
-    );
-  }
-}
+        </Route>
+        <Route exact path={AppRoute.LOSE}>
+          <GameOverScreen
+            onReplayButtonClick={resetGame}
+          />
+        </Route>
+        <PrivateRoute
+          exact
+          path={AppRoute.RESULT}
+          render={() => {
+            return (
+              <WinScreen
+                questionsCount={questions.length}
+                mistakesCount={mistakes}
+                onReplayButtonClick={resetGame}
+              />
+            );
+          }}
+        />
+      </Switch>
+    </Router>
+  );
+};
 
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,

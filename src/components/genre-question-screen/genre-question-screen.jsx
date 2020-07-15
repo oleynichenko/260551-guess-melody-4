@@ -1,5 +1,5 @@
 import GenreQuestionItem from "../genre-question-item/genre-question-item.jsx";
-import {GameType} from "../../constants.js";
+import {GameType} from "../../constants";
 
 class GenreQuestionScreen extends React.PureComponent {
   render() {
