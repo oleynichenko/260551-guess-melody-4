@@ -1,4 +1,4 @@
-import {Switch, BrowserRouter, Route} from "react-router-dom";
+import {Switch, Router, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import WelcomeScreen from "@components/welcome-screen/welcome-screen";
 import GenreQuestionScreen from "@components/genre-question-screen/genre-question-screen";
@@ -7,7 +7,7 @@ import WinScreen from "@components/win-screen/win-screen.jsx";
 import QuestionArtistScreen from "@components/question-artist-screen/question-artist-screen";
 import GameScreen from "@components/game-screen/game-screen";
 import withActivePlayer from "@hocs/with-active-player/with-active-player";
-import {GameType} from "../../constants";
+import {AppRoute, GameType} from "../../constants";
 import {ActionCreator} from "../../reducer/game/game.js";
 import withUserAnswer from "@hocs/with-user-answer/with-user-answer";
 import {getStep, getMistakes, getMaxMistakes} from "../../reducer/game/selectors.js";
@@ -16,6 +16,8 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import AuthScreen from "@components/auth-screen/auth-screen";
+import PrivateRoute from "../private-route/private-route";
+import history from "../../history.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const QuestionArtistScreenWrapped = withActivePlayer(QuestionArtistScreen);
@@ -24,13 +26,11 @@ class App extends React.PureComponent {
   _renderGameScreen() {
     const {
       authorizationStatus,
-      login,
       maxMistakes,
       mistakes,
       questions,
       onUserAnswer,
       onWelcomeButtonClick,
-      resetGame,
       step,
     } = this.props;
 
@@ -46,29 +46,14 @@ class App extends React.PureComponent {
     }
 
     if (mistakes >= maxMistakes) {
-      return (
-        <GameOverScreen
-          onReplayButtonClick={resetGame}
-        />
-      );
+      return history.push(AppRoute.LOSE);
     }
 
     if (step >= questions.length) {
       if (authorizationStatus === AuthorizationStatus.AUTH) {
-        return (
-          <WinScreen
-            questionsCount={questions.length}
-            mistakesCount={mistakes}
-            onReplayButtonClick={resetGame}
-          />
-        );
+        return history.push(AppRoute.RESULT);
       } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-        return (
-          <AuthScreen
-            onReplayButtonClick={resetGame}
-            onSubmit={login}
-          />
-        );
+        return history.push(AppRoute.LOGIN);
       }
 
       return null;
@@ -102,34 +87,42 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {questions} = this.props;
+    const {questions, mistakes, resetGame, login} = this.props;
 
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             {this._renderGameScreen()}
           </Route>
-          <Route exact path="/artist">
-            <QuestionArtistScreenWrapped
-              question={questions[1]}
-              onAnswer={() => {}}
-            />
-          </Route>
-          <Route exact path="/genre">
-            <GenreQuestionScreenWrapped
-              question={questions[0]}
-              onAnswer={() => {}}
-            />
-          </Route>
-          <Route exact path="/dev-auth">
+          <Route exact path={AppRoute.LOGIN}>
             <AuthScreen
-              onReplayButtonClick={() => {}}
-              onSubmit={() => {}}
+              onReplayButtonClick={resetGame}
+              onSubmit={login}
             />
           </Route>
+          <Route exact path={AppRoute.LOSE}>
+            <GameOverScreen
+              onReplayButtonClick={resetGame}
+            />
+          </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.RESULT}
+            render={() => {
+              return (
+                <WinScreen
+                  questionsCount={questions.length}
+                  mistakesCount={mistakes}
+                  onReplayButtonClick={resetGame}
+                />
+              );
+            }}
+          />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
